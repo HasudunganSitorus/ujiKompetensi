@@ -6,6 +6,7 @@ use App\Models\Parents;
 use App\Http\Resources\ParentResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ParentController extends Controller
 {
@@ -16,12 +17,16 @@ class ParentController extends Controller
      */
     public function index()
     {
-        $parents = Parents::orderBy('name', 'asc')->get();
-        return response([
-            'success' => true,
-            'message' =>'List Semua data parent',
-            'data'  => $parents
-        ],200);
+        
+        $response = Http::get('http://test.com');
+        $data = $response->json();
+        dd($data);
+        // $parents = Parents::orderBy('name', 'asc')->get();
+        // return response([
+        //     'success' => true,
+        //     'message' =>'List Semua data parent',
+        //     'data'  => $parents
+        // ],200);
 
         // $parents = Parents::orderBy('name', 'asc')->get();
         // return ParentResource::collection($parents);

@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
 {
@@ -23,6 +23,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $response = Http::get('https://rst.net.id/api/test-web-developer.json');
+        $datas = $response->json();
+        // dd($datas);
+        return view('home', compact('datas'));
+        // return view('home');
+    }
+    public function show($id)
+    {
+        
     }
 }
