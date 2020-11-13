@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// all list parent
+Route::get('parent', 'Api\ParentController@index');
+// single list parent
+Route::get('parent/{parent}', 'Api\ParentController@show');
+Route::get('child', 'Api\ChildController@index');
