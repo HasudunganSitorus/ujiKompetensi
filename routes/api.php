@@ -23,3 +23,8 @@ Route::get('parent', 'Api\ParentController@index');
 // single list parent
 Route::get('parent/{parent}', 'Api\ParentController@show');
 Route::get('child', 'Api\ChildController@index');
+
+
+Route::get('customer', 'Api\CustomerController@index');
+
+Route::get('home', 'HomeController@index');

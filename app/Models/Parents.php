@@ -11,6 +11,6 @@ class Parents extends Model
 
     public function childs()
     {
-        return $this->hasMany('App\Models\Child');
+        return $this->hasMany('App\Models\Child','parent_id');
     }
 }

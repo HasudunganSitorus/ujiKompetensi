@@ -6,6 +6,7 @@ use App\Models\Child;
 use App\Http\Resources\ChildResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ChildController extends Controller
 {
@@ -17,7 +18,8 @@ class ChildController extends Controller
     public function index()
     {
         $childs = Child::orderBy('name', 'asc')->get();
-        return ChildResource::collection($childs);
+        $child = ChildResource::collection($childs);
+        // return 
     }
 
     /**

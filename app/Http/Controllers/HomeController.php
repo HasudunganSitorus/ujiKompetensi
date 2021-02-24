@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Item;
 use Illuminate\Http\Request;
+use App\Http\Resources\ItemResource;
 use Illuminate\Support\Facades\Http;
 
 class HomeController extends Controller
@@ -23,12 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $response = Http::get('https://rst.net.id/api/test-web-developer.json');
-        $datas = $response->json();
-        // dd($datas);
-        return view('home', compact('datas'));
+        // $parent = Item::with('child')->get();
+        // dd($parent);
+        $items = Item::where('parent_id', 0)->with('child.child')->get();
+        return view('home', compact('items'));
+        // return ItemResource::collection($items);
+        // dd($items);
+
+        // return view('home', compact('datas'));
         // return view('home');
     }
+    
     public function show($id)
     {
         

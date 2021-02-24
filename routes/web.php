@@ -20,6 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resource('parent', 'Api\ParentController');
+// use App\Models\Item;
+// Route::get('/home', function () {
+//      $item =  Item::with('child')->get();
+//      print($item);
+// });
+Route::resource('customer', 'CustomerController');
+Route::resource('parent', 'ParentController');
 Route::resource('child', 'Api\ChildController');

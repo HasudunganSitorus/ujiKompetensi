@@ -11,6 +11,6 @@ class Child extends Model
 
     public function parent()
     {
-        return $this->belongsTo('App\Models\Parents', 'parent_id', 'id');
+        return $this->belongsTo('App\Models\Parents', 'parent_id');
     }
 }

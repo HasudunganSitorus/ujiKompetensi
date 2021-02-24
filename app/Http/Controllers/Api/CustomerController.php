@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Item;
-use App\Models\Parents;
-use App\Http\Resources\ItemResource;
-use App\Http\Resources\ParentResource;
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
+use App\Http\Resources\CustomerResource;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
-class ParentController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,23 +16,8 @@ class ParentController extends Controller
      */
     public function index()
     {
-        
-        // $response = Http::get('http://test.com');
-        // $data = $response->json();
-        // dd($data);
-
-
-
-        // $parents = Parents::orderBy('name', 'asc')->get();
-        // return response([
-        //     'success' => true,
-        //     'message' =>'List Semua data parent',
-        //     'data'  => $parents
-        // ],200);
-
-        $parents = Parents::orderBy('name', 'asc')->get();
-        // return ParentResource::collection($parents);
-        dd($parents);
+        $customers = Customer::orderBy('name', 'asc')->get();
+        return CustomerResource::collection($customers);
     }
 
     /**
@@ -65,10 +47,9 @@ class ParentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Parents $parent): ParentResource
+    public function show($id)
     {
-        $parents = Parents::findOrFail($parent);
-        return new ParentResource($parents);
+        //
     }
 
     /**
@@ -89,7 +70,7 @@ class ParentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Parents $parent)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -100,7 +81,7 @@ class ParentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Parents $parent)
+    public function destroy($id)
     {
         //
     }

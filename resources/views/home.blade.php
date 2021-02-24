@@ -15,17 +15,16 @@
                   <thead class="text-center">
                   <tr>
                     <th>No</th>
-                    <th>Title</th>
-                    <th>Conten</th>
+                    <th>name</th>
+                    <th>parent_id</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                    @foreach ($datas as $data)
-                    <tr>
+                    @foreach ($items as $item)
                       <td>{{ $loop->iteration }}</td>
-                      <td>{{ $data['title'] }} </td>
-                      <td>{{ $data['content'] }}</td>
+                      <td>{{ $item['name'] }} </td>
+                      <td>{{ $item['parent_id'] }}</td>
                       <td class="text-right py-0 align-middle">
                         <div class="btn-group btn-group-sm mb-2 p-2">
                           <a href="#" class="btn btn-info "><i class="fas fa-eye"></i></a>
